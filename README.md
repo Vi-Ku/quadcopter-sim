@@ -344,14 +344,12 @@ If everything has went fine, then that's great, now we can run our controller no
 rosrun iq_gnc waypoint.py
 ```
 
-Now run this command in a new terminal.
-```
-rosrun iq_gnc obs_avoid.py
-```
- So you can see that the quadcopter is able to move from one point to another by avoiding the obstacles in the way. [Waypoint Python Script](waypoint.py). _Python script has been marked with comments for better navigation._
-The controller is very simple one, as this one only work on the laser scan of lidar sensor that has been attached to it, but as our aim was to find a very simple way, so that's why we have adopted for this [Obstacle Avoidance Python Script](obs_avoid.py). _Python script has been marked with comments for better navigation._ There are a lot of improvements required in this controller, but this one has been coded from scratch to build a very simple obstacle avoidance system. 
-Here we have also used the video feed from two cameras installed on the drone which makes surveying and navigation easy.
+ So you can see that the quadcopter is able to move from one point to another by avoiding the obstacles in the way.
+The controller is very simple one, as this one only work on the laser scan of lidar sensor that has been attached to it, but as our aim was to find a very simple way, so that's why we have adopted for this. There are a lot of improvements required in this controller, but this one has been coded from scratch to build a very simple obstacle avoidance system.   
 
+Here we have also used the video feed from two cameras installed on the drone which makes surveying and navigation easy.
+## [Waypoint Python Script](waypoint.py). 
+_Python script has been marked with comments for better understanding._
 
 # Something Extra to easy out life
 I have written a shell script to run all the above command for execute the coommand in shell script in a above above order with specific delay, but you can adjust it as per your system capabilities.
@@ -377,9 +375,10 @@ sleep 25
 
 gnome-terminal -- sh -c 'rosrun iq_gnc waypoint.py' 1> /dev/null 2> /dev/null
 
-
-gnome-terminal -- sh -c 'rosrun iq_gnc obs_avoid.py' 1> /dev/null 2> /dev/null
 ```
+
+## Here is the Link of the recorded video for the entire simulation.
+## [Guidance and Navigation Video](https://drive.google.com/drive/folders/1svvVFIoN7yqpu-FWnKkeA3yF8MoqvUe4?usp=sharing)
  # That's all for this. 
 
 I have implemented the basic controller. But if one is interested then the below repositories can be of great help for Autonomous Drone, which uses a very sophisticated path planning and obstacle avoidance techniques.

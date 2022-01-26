@@ -16,6 +16,3 @@ gnome-terminal -- sh -c 'rosrun image_view image_view image:=/webcam1/image_raw'
 sleep 25
 
 gnome-terminal -- sh -c 'rosrun iq_gnc waypoint.py' 1> /dev/null 2> /dev/null
-
-
-gnome-terminal -- sh -c 'rosrun iq_gnc obs_avoid.py' 1> /dev/null 2> /dev/null
