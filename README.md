@@ -311,7 +311,8 @@ Run the below command to launch the simulated space in gazebo with the obstacle 
 roslaunch iq_sim lidar.launch
 ```
 This will launch the drone as shown below
-![Simulation Space](image/Gazebo_1.png)
+![Simulation Space](image/Gazebo_1.jpg)
+![Simulation Space drone zoomed](image/Gazebo_2.jpg)
 
 Now in another new terminal launch the below command to activate the MAVProxy client and wait for few seconds.
 ```
@@ -332,7 +333,7 @@ rosrun image_view image_view image:=/webcam1/image_raw
 ```
 
 Now wait for the below message to appear on the MAVProxy Client.
-![MAV Proxy Ready](image/Gazebo_1.png)
+![MAV Proxy Ready](image/MAVProxy.png)
 
 If everything has went fine, then that's great, now we can run our controller node, by running the below command in a new terminal.
 ```
