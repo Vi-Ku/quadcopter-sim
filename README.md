@@ -377,3 +377,12 @@ gnome-terminal -- sh -c 'rosrun iq_gnc waypoint.py' 1> /dev/null 2> /dev/null
 gnome-terminal -- sh -c 'rosrun iq_gnc obs_avoid.py' 1> /dev/null 2> /dev/null
 ```
  # That's all for this. 
+
+I have implemented the basic controller. But if one is interested then the below repositories can be of great help for Autonomous Drone, which use a very sophisticated path planning and obstacle avoidance techniques.
+
+- ## [Autonomous-Delivery-Drone](https://github.com/aj-naik/Autonomous-Delivery-Drone)
+
+- ## [Edrone-Autonomous](https://github.com/Project-SwaG/edrone-autonomous-ros)
+- ## [Autonomous-Drone](https://github.com/szebedy/autonomous-drone)
+- ## [Autonomous-Drone](https://github.com/Matnay/Autonomous-Drone)
+- ## [Autonomous_Landing_UAV](https://github.com/MikeS96/autonomous_landing_uav)

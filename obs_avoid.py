@@ -24,7 +24,7 @@ def laser_cb(msg):
     avoid = False
 
     for i in range(1, len(cr_scan.ranges)):
-        d0 = 5
+        d0 = 4
         # k = 0.6
         if cr_scan.ranges[i] < d0 and cr_scan.ranges[i] > 0.35:
             avoid = True
@@ -52,10 +52,10 @@ def laser_cb(msg):
         cur_pose = drone.get_current_location()
         print("current_location")
         print(cur_pose)
-        X_pos = -1*(0.4*sign_y  + cur_pose.y)
-        Y_pos = -1*(3*sign_x + cur_pose.x)
+        X_pos = 0.4*sign_x  + cur_pose.x
+        Y_pos = 3*sign_y + cur_pose.y
         Z_pos = cur_pose.z
-        psi_pos = cr_heading
+        psi_pos = 10
         # print("current_X_pos: ",X_pos)
         # print("current_Y_pos: ",Y_pos)
         # print("current_Z_pos: ",Z_pos)
