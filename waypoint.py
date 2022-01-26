@@ -11,7 +11,7 @@ from sensor_msgs.msg import LaserScan
 from math import cos, sin, pow, radians, sqrt
 # Importing Point message from package geometry_msgs.
 from geometry_msgs.msg import Point
-
+# Importing to
 import time
 
 move = True

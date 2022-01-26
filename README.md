@@ -40,12 +40,12 @@ Code blocks are meant to be typed in Terminal windows. "Control+Alt+T" opens a n
 ## 2. Set Up Catkin workspace
 
 We use `catkin build` instead of `catkin_make`. Please install the following:
-```
+```bash
 sudo apt-get install python-wstool python-rosinstall-generator python-catkin-tools
 ```
 
 Then, initialize the catkin workspace:
-```
+```bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
 catkin init
@@ -54,7 +54,7 @@ catkin init
 ## 3. Dependencies installation
 
 Install `mavros` and `mavlink` from source:
-```
+```bash
 cd ~/catkin_ws
 wstool init ~/catkin_ws/src
 
@@ -67,26 +67,27 @@ rosdep install --from-paths src --ignore-src --rosdistro `echo $ROS_DISTRO` -y
 catkin build
 ```
 Add a line to end of `~/.bashrc` by running the following command:
-```
+```bash
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 ```
 
 update global variables
-```
+```bash
 source ~/.bashrc
 ```
 
 install geographiclib dependancy 
-```
+```bash
 sudo ~/catkin_ws/src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 ```
 
 
 ## 4. Clone IQ Simulation ROS package 
 
-```
+```bash
 cd ~/catkin_ws/src
-git clone https://github.com/Intelligent-Quads/iq_sim.git
+git clone https://github.com/vi-ku/iq_sim.git
+git clone https://github.com/vi-ku/iq_gnc.git
 ```
 Our repository should now be copied to `~/catkin_ws/src/iq_sim/` (don't run this line. This is just saying that if you browse in the file manager, you will see those folders).
 
@@ -98,12 +99,12 @@ echo "GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/catkin_ws/src/iq_sim/models" 
 ## 5. Build instructions
    Inside `catkin_ws`, run `catkin build`:
 
-```
+```bash
 cd ~/catkin_ws
 catkin build
 ```
 update global variables
-```
+```bash
 source ~/.bashrc
 sudo apt install libgazebo9-dev
 ```
@@ -113,7 +114,7 @@ sudo apt install libgazebo9-dev
 ## Clone ArduPilot
 
 In home directory:
-```
+```bash
 cd ~
 sudo apt install git
 git clone https://github.com/ArduPilot/ardupilot.git
@@ -123,24 +124,24 @@ git submodule update --init --recursive
 ```
 
 ## Install dependencies:
-```
+```bash
 sudo apt install python-matplotlib python-serial python-wxgtk3.0 python-wxtools python-lxml python-scipy python-opencv ccache gawk python-pip python-pexpect
 ```
 
 ## Use pip (Python package installer) to install mavproxy:
-```
+```bash
 sudo pip install future pymavlink MAVProxy
 ```
 
 MAVProxy is a fully-functioning GCS for UAV’s. The intent is for a minimalist, portable and extendable GCS for any UAV supporting the MAVLink protocol (such as one using ArduPilot). For more information check out http://ardupilot.github.io/MAVProxy/html/index.html
 
 Open `~/.bashrc` for editing:
-```
+```bash
 gedit ~/.bashrc
 ```
 
 Add these lines to end of `~/.bashrc` (the file open in the text editor):
-```
+```bash
 export PATH=$PATH:$HOME/ardupilot/Tools/autotest
 export PATH=/usr/lib/ccache:$PATH
 ```
@@ -148,12 +149,12 @@ export PATH=/usr/lib/ccache:$PATH
 Save and close the text editor.
 
 Reload `~/.bashrc`:
-```
+```bash
 . ~/.bashrc
 ```
 
 Run SITL (Software In The Loop) once to set params:
-```
+```bash
 cd ~/ardupilot/ArduCopter
 sim_vehicle.py -w
 ```
@@ -181,14 +182,14 @@ for more detailed information please visit http://qgroundcontrol.com/
 ## Install QGroundControl for Ubuntu Linux 16.04 LTS or later:
 
 Add current user accout to dialout group and remove modemmanager
-```
+```bash
 cd ~
 sudo usermod -a -G dialout $USER
 sudo apt-get remove modemmanager
 ```
 
 Download QGroundControl.AppImage 
-```
+```bash
 wget https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage
 ```
 Change permissions for execution 
@@ -198,12 +199,12 @@ chmod +x ./QGroundControl.AppImage
 
 If you want to execute the program, then run the below command
 
-```
+```bash
 ./QGroundControl.AppImage  (or double click)
 ```
 ## Run SITL and connect with Q Ground
 
-```
+```bash
 cd ~/ardupilot/ArduCopter/
 sim_vehicle.py
 ```
@@ -214,28 +215,28 @@ sim_vehicle.py
 
 
 # Install Gazebo plugin for APM (ArduPilot Master) :
-```
+```bash
 cd ~
 git clone https://github.com/khancyr/ardupilot_gazebo.git
 cd ardupilot_gazebo
 ```
 ***Ubuntu 18.04 only*** checkout dev
-```
+```bash
 git checkout dev
 ```
 build and install plugin
-```
+```bash
 mkdir build
 cd build
 cmake ..
 make -j4
 sudo make install
 ```
-```
+```bash
 echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
 ```
 Set paths for models:
-```
+```bash
 echo 'export GAZEBO_MODEL_PATH=~/ardupilot_gazebo/models' >> ~/.bashrc
 . ~/.bashrc
 ```
@@ -245,12 +246,12 @@ echo 'export GAZEBO_MODEL_PATH=~/ardupilot_gazebo/models' >> ~/.bashrc
 **NOTE the iris_arducopter_runway is not currently working in gazebo11. The iq_sim worlds DO work**
 
 In one Terminal (Terminal 1), run Gazebo:
-```
+```bash
 gazebo --verbose ~/ardupilot_gazebo/worlds/iris_arducopter_runway.world
 ```
 
 In another Terminal (Terminal 2), run SITL:
-```
+```bash
 cd ~/ardupilot/ArduCopter/
 sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 ```
@@ -258,7 +259,7 @@ sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 
 Use git to get a bunch of open source gazebo models from the Open Source Robotics Foundation (OSRF) 
 
-```
+```bash
 cd ~
 mkdir gazebo_ws
 cd gazebo_ws
@@ -275,14 +276,14 @@ source ~/.bashrc
 Here we will install a package to stream the video feed from the camera on the quadcopter, which can be directly accessed by any web browser on the same network.
 ## Installation
 
-```
+```bash
 cd ~/catkin/src
 git clone https://github.com/sfalexrog/async_web_server_cpp.git
 cd async_web_server
 git checkout noetic-devel
 ```
 
-```
+```bash
 cd ~/catkin/src
 git clone https://github.com/RobotWebTools/web_video_server.git
 ```
@@ -295,7 +296,7 @@ catkin build
 ```
 rosrun web_video_server web_video_server
 ```
-## To view the video feed, we can type in the below ip address:
+## To view the video feed, we can type in the below ip address while the simulation is running:
 
                                 http://localhost:8080/
 
@@ -318,12 +319,16 @@ cd ~/ardupilot/ArduCopter/ && sim_vehicle.py -v ArduCopter -f gazebo-iris --cons
 ```
 
 Now in another new terminal #3 run the below command to run the apm node.
-```
+```bash
 roslaunch iq_sim apm.launch
 ```
 Now in another new terminal #4 run the below command to launch the web video server.
 ```
 rosrun web_video_server web_video_server
+```
+Now in another new terminal run the below command to view the camer feed over the ros window
+```bash
+rosrun image_view image_view image:=/webcam1/image_raw
 ```
 
 Now wait for the below message to appear on the MAVProxy Client.
@@ -338,7 +343,36 @@ Now run this command in a new terminal.
 ```
 rosrun iq_gnc obs_avoid.py
 ```
- So you can see that the quadcopter is able to move from one point to another by avoiding the obstacles in the way. [Waypoint Python Script](waypoint.py)
-The controller is very simple one, as this one only work on the laser scan of lidar sensor that has been attached to it, but as our aim was to find a very simple way, so that's why we have adopted for this [Obstacle Avoidance Python Script](obs_avoid.py). There are a lot of improvements required in this controller, but this one has been coded from scratch to build a very simple obstacle avoidance system. 
+ So you can see that the quadcopter is able to move from one point to another by avoiding the obstacles in the way. [Waypoint Python Script](waypoint.py). _Python script has been marked with comments for better navigation._
+The controller is very simple one, as this one only work on the laser scan of lidar sensor that has been attached to it, but as our aim was to find a very simple way, so that's why we have adopted for this [Obstacle Avoidance Python Script](obs_avoid.py). _Python script has been marked with comments for better navigation._ There are a lot of improvements required in this controller, but this one has been coded from scratch to build a very simple obstacle avoidance system. 
 Here we have also used the video feed from two cameras installed on the drone which makes surveying and navigation easy.
+
+
+# Something Extra to easy out life
+I have written a shell script to run all the above command for execute the coommand in shell script in a above above order with specific delay, but you can adjust it as per your system capabilities.
+[run_all_command.sh](run_all_command.sh)
+```bash
+#!/bin/sh
+cd ~
+set -x -e
+gnome-terminal -- sh -c 'roslaunch iq_sim lidar.launch' 1> /dev/null 2> /dev/null
+gnome-terminal -- sh -c 'cd ~/ardupilot/ArduCopter/ && sim_vehicle.py -v ArduCopter -f gazebo-iris --console' 1> /dev/null 2> /dev/null
+
+sleep 30
+
+gnome-terminal -- sh -c 'roslaunch iq_sim apm.launch' 1> /dev/null 2> /dev/null
+
+gnome-terminal -- sh -c 'rosrun web_video_server web_video_server' 1> /dev/null 2> /dev/null
+
+sleep 3
+
+gnome-terminal -- sh -c 'rosrun image_view image_view image:=/webcam1/image_raw' 1> /dev/null 2> /dev/null
+
+sleep 25
+
+gnome-terminal -- sh -c 'rosrun iq_gnc waypoint.py' 1> /dev/null 2> /dev/null
+
+
+gnome-terminal -- sh -c 'rosrun iq_gnc obs_avoid.py' 1> /dev/null 2> /dev/null
+```
  # That's all for this. 
