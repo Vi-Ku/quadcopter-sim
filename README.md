@@ -331,8 +331,12 @@ Now in another new terminal run the below command to view the camer feed over th
 ```bash
 rosrun image_view image_view image:=/webcam1/image_raw
 ```
-
+Also to view the Video stream in Browser, go to this webaddress.
+```
+                          http://localhost:8080/
+```
 Now wait for the below message to appear on the MAVProxy Client.
+
 ![MAV Proxy Ready](image/MAVProxy.png)
 
 If everything has went fine, then that's great, now we can run our controller node, by running the below command in a new terminal.
