@@ -279,7 +279,7 @@ Here we will install a package to stream the video feed from the camera on the q
 ```bash
 cd ~/catkin/src
 git clone https://github.com/sfalexrog/async_web_server_cpp.git
-cd async_web_server
+cd async_web_server_cpp
 git checkout noetic-devel
 ```
 
